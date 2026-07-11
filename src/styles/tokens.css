@@ -1,0 +1,42 @@
+/* Brand tokens — sampled from Maria's Canva portfolio, contrast-verified (PLAN.md §1) */
+:root {
+  --tan: #cfbfa9;
+  --brown: #64472f;
+  --ink: #3f2c1d;
+  --bone: #e6ded2;
+  --espresso: #130a02;
+
+  --font-display: 'Poppins', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-body: 'Quicksand Variable', 'Quicksand', 'Avenir Next', 'Segoe UI', sans-serif;
+
+  /* 8pt rhythm */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-6: 3rem;
+  --s-8: 4rem;
+  --s-12: 6rem;
+  --s-16: 8rem;
+  --s-20: 10rem;
+
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+
+  /* semantic z scale */
+  --z-media: 1;
+  --z-content: 2;
+  --z-nav: 100;
+  --z-skip: 200;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@supports (color: oklch(0% 0 0)) {
+  :root {
+    --tan: oklch(80.6% 0.032 78);
+    --brown: oklch(40.4% 0.055 55);
+    --ink: oklch(30.3% 0.045 55);
+    --bone: oklch(89.7% 0.017 78);
+    --espresso: oklch(13.5% 0.025 55);
+  }
+}

@@ -1,0 +1,237 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--tan);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--brown);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+  max-width: 70ch;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--brown);
+  color: var(--bone);
+}
+
+:focus-visible {
+  outline: 2px solid var(--espresso);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- skip link ---- */
+.skip-link {
+  position: fixed;
+  z-index: var(--z-skip);
+  top: var(--s-2);
+  left: var(--s-2);
+  padding: 0.6em 1.2em;
+  background: var(--espresso);
+  color: var(--bone);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-300%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* ---- pills & links ---- */
+.pill {
+  display: inline-block;
+  background: var(--brown);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.65em 1.5em;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+
+.pill:hover {
+  background: var(--espresso);
+  transform: translateY(-1px);
+}
+
+.pill:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.pill-lg {
+  font-size: 1.125rem;
+  padding: 0.8em 1.9em;
+}
+
+.pill-invert {
+  background: var(--bone);
+  color: var(--espresso);
+}
+
+.pill-invert:hover {
+  background: var(--tan);
+}
+
+.ghost-link {
+  font-weight: 600;
+  color: var(--ink);
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 2px;
+  transition: color 0.2s var(--ease-out);
+}
+
+.ghost-link:hover {
+  color: var(--brown);
+}
+
+/* to-confirm placeholder content — deliberately visible, never shipped */
+.todo {
+  background: color-mix(in srgb, var(--bone) 55%, transparent);
+  border-bottom: 2px dashed var(--brown);
+  padding: 0 0.25em;
+}
+
+/* ---- nav ---- */
+.nav {
+  position: fixed;
+  z-index: var(--z-nav);
+  inset: 0 0 auto 0;
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-2) var(--gutter);
+  transition: background-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.nav--solid {
+  background: color-mix(in srgb, var(--tan) 96%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--brown) 25%, transparent);
+}
+
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--brown);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--s-1);
+}
+
+.nav-links a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.45em 1em;
+  border-radius: 999px;
+  transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.nav-links a:hover {
+  background: color-mix(in srgb, var(--brown) 14%, transparent);
+}
+
+.nav-links a[aria-current='true'] {
+  background: var(--brown);
+  color: var(--bone);
+}
+
+.nav-cta {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 760px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ---- footer ---- */
+.footer {
+  background: var(--espresso);
+  color: var(--tan);
+  padding: var(--s-3) var(--gutter) var(--s-4);
+  border-top: 1px solid color-mix(in srgb, var(--bone) 15%, transparent);
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--tan);
+  text-underline-offset: 0.25em;
+}
+
+.footer a:hover {
+  color: var(--bone);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

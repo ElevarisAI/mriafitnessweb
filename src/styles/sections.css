@@ -1,0 +1,463 @@
+/* ============ shared ============ */
+.section-title {
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  margin-bottom: var(--s-6);
+}
+
+/* warm tan wash — pulls the grey studio shots into the brand world */
+.wash {
+  position: relative;
+}
+
+.wash img {
+  filter: sepia(0.22) saturate(0.92) contrast(1.02);
+}
+
+.wash::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--tan);
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* feathered image edges — photos float on the surface, never boxed.
+   Two linear gradients intersected so every edge dissolves into the backdrop. */
+.feather {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+    linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+    linear-gradient(to bottom, transparent, #000 7%, #000 93%, transparent);
+  mask-composite: intersect;
+}
+
+/* ============ hero ============ */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-media);
+}
+
+.hero-media picture,
+.hero-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-media img {
+  object-fit: cover;
+  object-position: 68% 30%;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: var(--z-content);
+  padding: var(--s-16) var(--gutter) var(--s-8);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 0.98;
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-line > span {
+  display: block;
+}
+
+.hero-sub {
+  margin-top: var(--s-3);
+  max-width: 34ch;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--espresso);
+}
+
+.hero-actions {
+  margin-top: var(--s-4);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+/* Below 900px the copy overlaps her figure: push the crop right and raise a tan
+   scrim under the text so it never sits directly on the dark leggings. */
+@media (max-width: 900px) {
+  .hero-media img {
+    object-position: 74% 22%;
+  }
+
+  .hero-media::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-content);
+    background: linear-gradient(
+      to bottom,
+      transparent 24%,
+      color-mix(in srgb, var(--tan) 55%, transparent) 42%,
+      color-mix(in srgb, var(--tan) 88%, transparent) 68%
+    );
+    pointer-events: none;
+  }
+}
+
+/* ============ proof strip — bare text on the tan, no band ============ */
+.proof {
+  color: var(--brown);
+  padding: var(--s-3) 0;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  list-style: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ============ lean & locked ============ */
+.plan {
+  padding-bottom: var(--s-16);
+}
+
+.lock-stage {
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.lock-title {
+  font-size: clamp(2.5rem, 9.5vw, 6rem);
+  white-space: nowrap;
+}
+
+.lock-title .char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.plan-body {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  padding: 0 var(--gutter);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.plan-lead {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  line-height: 1.3;
+  color: var(--brown);
+  margin-bottom: var(--s-3);
+  text-wrap: balance;
+}
+
+.plan-copy > p {
+  max-width: 52ch;
+}
+
+.plan-copy h3 {
+  font-size: 1.35rem;
+  margin: var(--s-6) 0 var(--s-2);
+}
+
+.plan-list {
+  list-style: none;
+}
+
+.plan-list li {
+  padding: 0.7rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--brown) 30%, transparent);
+}
+
+.plan-list li:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--brown) 30%, transparent);
+}
+
+.plan-cta {
+  margin-top: var(--s-6);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+.plan-price {
+  font-size: 0.95rem;
+}
+
+.plan-media {
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 820px) {
+  .plan-body {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-media {
+    order: -1;
+    max-width: 26rem;
+    margin: 0 auto;
+  }
+}
+
+/* ============ 1:1 coaching ============ */
+.how {
+  background: var(--bone);
+  padding: var(--s-16) var(--gutter);
+}
+
+.how-inner {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.how .section-title {
+  margin-bottom: var(--s-2);
+}
+
+.how-lead {
+  max-width: 48ch;
+  margin-bottom: var(--s-8);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.how-cta {
+  margin-top: var(--s-8);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.how-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+}
+
+.how-step {
+  position: relative;
+  padding-left: var(--s-8);
+  max-width: 34rem;
+}
+
+.how-step:nth-child(2) {
+  margin-left: var(--s-6);
+}
+
+.how-step:nth-child(3) {
+  margin-left: var(--s-12);
+}
+
+.how-num {
+  position: absolute;
+  left: 0;
+  top: -0.35em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--brown) 18%, transparent);
+}
+
+.how-step h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+/* wash the studio grey toward the bone surface it sits on */
+.how-media.wash::after {
+  background: var(--bone);
+  opacity: 0.55;
+}
+
+@media (max-width: 820px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-step:nth-child(2),
+  .how-step:nth-child(3) {
+    margin-left: 0;
+  }
+}
+
+/* ============ beach break ============ */
+.beach {
+  position: relative;
+  height: 76vh;
+  overflow: hidden;
+}
+
+.beach-media {
+  position: absolute;
+  inset: -12% 0;
+  z-index: var(--z-media);
+}
+
+.beach-media picture,
+.beach-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.beach-media img {
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+.beach::after {
+  content: '';
+  position: absolute;
+  inset: 40% 0 0;
+  z-index: var(--z-media);
+  background: linear-gradient(to top, color-mix(in srgb, var(--espresso) 55%, transparent), transparent);
+  pointer-events: none;
+}
+
+.beach-line {
+  position: absolute;
+  z-index: var(--z-content);
+  bottom: var(--s-6);
+  left: var(--gutter);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  color: var(--bone);
+}
+
+/* ============ who i am ============ */
+.about {
+  padding: var(--s-16) var(--gutter);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.about .section-title {
+  margin-bottom: var(--s-4);
+}
+
+/* the manifesto inks in word by word on scroll */
+.about-manifesto {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--brown);
+  max-width: 24em;
+  text-wrap: balance;
+}
+
+.about-manifesto .word {
+  display: inline-block;
+}
+
+.about-grid {
+  margin-top: var(--s-8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.about-media {
+  transform: rotate(1.5deg);
+}
+
+.about-copy p {
+  max-width: 56ch;
+  margin-bottom: var(--s-2);
+}
+
+@media (max-width: 820px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-media {
+    max-width: 28rem;
+  }
+}
+
+/* ============ final cta ============ */
+.start {
+  background: var(--espresso);
+  padding: var(--s-20) var(--gutter);
+  text-align: center;
+}
+
+.start-title {
+  color: var(--tan);
+  font-size: clamp(3rem, 9vw, 6rem);
+  margin-bottom: var(--s-6);
+}
+
+.start-note {
+  margin: var(--s-3) auto 0;
+  display: inline-block;
+  color: var(--tan);
+  font-size: 0.9rem;
+  background: none;
+  border-bottom-color: var(--tan);
+}

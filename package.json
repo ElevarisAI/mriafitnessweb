@@ -1,0 +1,23 @@
+{
+  "name": "mriafitness",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "images": "node scripts/optimize-images.mjs"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "^5.2.7",
+    "@fontsource-variable/quicksand": "^5.2.10",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.0.0",
+    "sharp": "^0.34.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0"
+  }
+}
