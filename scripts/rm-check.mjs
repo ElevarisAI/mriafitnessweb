@@ -10,7 +10,7 @@ await page.goto('http://localhost:5199/', { waitUntil: 'networkidle0' })
 await new Promise((r) => setTimeout(r, 1200))
 // with reduced motion, everything must be visible without any scrolling/animation
 const visible = await page.evaluate(() => {
-  const els = ['.hero-title', '.hero-sub', '.lock-title', '.plan-lead', '.how-step', '.about-copy p']
+  const els = ['.hero-title', '.hero-sub', '.lock-title', '.lock-sub', '.plan-lead', '.how-step', '.about-list']
   return els.map((sel) => {
     const el = document.querySelector(sel)
     if (!el) return `${sel}: MISSING`

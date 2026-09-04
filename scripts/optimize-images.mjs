@@ -13,7 +13,7 @@ const MAP = {
   stretch: { file: '0371 - lojo.jpg', widths: [640, 960, 1600] },
   beach: { file: 'dfuns 2025-11-18 112758.429.JPEG', widths: [960, 1600, 2400] },
   about: { file: 'photo.png', widths: [640, 960, 1600] },
-  whoiam: { file: 'Who i am.jpg', widths: [640, 960, 1600] },
+  whoiam: { file: 'whoiam-portrait.jpg', widths: [640, 960, 1600] },
 }
 
 await mkdir(OUT, { recursive: true })

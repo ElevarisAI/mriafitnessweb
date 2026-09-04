@@ -7,11 +7,14 @@ import { initLock } from './motion/lock'
 import { initReveals } from './motion/reveals'
 import { initParallax } from './motion/parallax'
 import { initAboutFill } from './motion/about'
+import { initForm, initWaitlist } from './form'
 
 gsap.registerPlugin(ScrollTrigger)
 
 initNav()
 initMarquee()
+initForm()
+initWaitlist()
 
 // All GSAP motion is gated on reduced-motion; without JS or with it reduced,
 // every section renders fully visible (initial states are set from JS only).

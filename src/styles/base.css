@@ -8,6 +8,11 @@
   margin: 0;
 }
 
+/* the hidden attribute must win over element display rules (.pill, forms, etc.) */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -98,6 +103,7 @@ a {
   padding: 0.65em 1.5em;
   border-radius: 999px;
   text-decoration: none;
+  white-space: nowrap;
   transition: background-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 }
 
