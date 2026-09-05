@@ -44,7 +44,8 @@ Page order: hero → proof marquee → Who I Am → Lean & Locked (pinned lock-i
   No new colours. Body text on tan uses `--ink` (7.35:1); `--brown` is for large
   display type only (4.7:1). Keep every text/background pair at WCAG AA.
 - **Type:** Poppins 800 for display, Quicksand for body. Every heading ends with a
-  full stop ("The Plan.") — brand tic, keep it.
+  full stop ("The Plan.") — brand tic, keep it. Exception, per Maria: the "What's
+  included" accordion labels take no full stop (they're row labels, not headings).
 - **Photos are never boxed.** Studio shots get `.wash` (warm tan multiply) and
   `.feather` (edge mask) so they dissolve into the page. New photos should get the
   same treatment; full-bleed images are the exception.

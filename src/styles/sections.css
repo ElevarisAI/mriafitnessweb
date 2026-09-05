@@ -232,17 +232,85 @@
   margin: var(--s-6) 0 var(--s-2);
 }
 
-.plan-list {
-  list-style: none;
-}
-
-.plan-list li {
-  padding: 0.7rem 0;
+/* "What's included" — collapsible rows. Each head is scannable on its own
+   (label + one-line hint); the detail opens on demand so the section stays short.
+   Native <details>, so it still opens with JS off; motion.ts only animates it. */
+.included {
   border-top: 1px solid color-mix(in srgb, var(--brown) 30%, transparent);
 }
 
-.plan-list li:last-child {
+.incl {
   border-bottom: 1px solid color-mix(in srgb, var(--brown) 30%, transparent);
+}
+
+.incl-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--s-1) var(--s-2);
+  padding: 0.85rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* strip the native disclosure triangle — the chevron is ours */
+.incl-head::-webkit-details-marker {
+  display: none;
+}
+
+.incl-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--ink);
+  transition: color 200ms var(--ease-out);
+}
+
+.incl-head:hover .incl-label {
+  color: var(--brown);
+}
+
+.incl-hint {
+  font-size: 0.92rem;
+  color: var(--brown);
+}
+
+.incl-chevron {
+  width: 1.05rem;
+  height: 1.05rem;
+  align-self: center;
+  color: var(--brown);
+  transition: transform 240ms var(--ease-out);
+}
+
+.incl[open] .incl-chevron {
+  transform: rotate(180deg);
+}
+
+.incl-panel {
+  overflow: hidden;
+}
+
+.incl-panel p {
+  max-width: 52ch;
+  padding-bottom: 1rem;
+}
+
+/* narrow: hint drops under the label, chevron spans both rows */
+@media (max-width: 560px) {
+  .incl-head {
+    grid-template-columns: 1fr auto;
+  }
+
+  .incl-hint {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .incl-chevron {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
 }
 
 .plan-cta {
@@ -792,9 +860,72 @@
   display: none;
 }
 
-.start-submit {
-  align-self: center;
+/* one-question-at-a-time stepper: .form-step visibility is toggled entirely by
+   JS (src/motion/stepper.ts) via the native hidden attribute — with JS off every
+   step stays visible and the form degrades to the plain single-page version. */
+.start-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: color-mix(in srgb, var(--tan) 85%, transparent);
+  font-size: 0.85rem;
+}
+
+.start-progress-track {
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tan) 25%, transparent);
+  overflow: hidden;
+}
+
+.start-progress-fill {
+  display: block;
+  height: 100%;
+  width: calc(100% / 6);
+  background: var(--tan);
+  border-radius: inherit;
+  transition: width 320ms var(--ease-out);
+}
+
+.start-progress-label {
+  white-space: nowrap;
+}
+
+.form-step {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--s-3);
   margin-top: var(--s-2);
+}
+
+.start-back {
+  margin-right: auto;
+  background: none;
+  border: 0;
+  padding: 0.4em 0.2em;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--tan);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 2px;
+  transition: color 200ms var(--ease-out);
+}
+
+.start-back:hover {
+  color: var(--bone);
+}
+
+.start-submit {
   border: 0;
   cursor: pointer;
 }

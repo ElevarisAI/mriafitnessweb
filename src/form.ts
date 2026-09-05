@@ -1,18 +1,18 @@
 // Lead-capture forms. Custom inline validation on required fields, then an AJAX
 // POST to the form's Formspree action so the visitor stays on the page and the
 // form is swapped for a confirmation message.
-type Field = HTMLInputElement | HTMLTextAreaElement
+export type Field = HTMLInputElement | HTMLTextAreaElement
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-function validate(input: Field): string {
+export function validate(input: Field): string {
   const value = input.value.trim()
   if (input.hasAttribute('required') && !value) return 'This field is required.'
   if (input.type === 'email' && value && !EMAIL_RE.test(value)) return 'Please enter a valid email address.'
   return ''
 }
 
-function setError(input: Field, message: string): void {
+export function setError(input: Field, message: string): void {
   const error = input.closest('.field')?.querySelector<HTMLElement>('[data-error]')
   if (error) error.textContent = message
   input.setAttribute('aria-invalid', message ? 'true' : 'false')

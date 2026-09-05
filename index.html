@@ -99,20 +99,65 @@
       <div class="lock-stage" data-lock-stage>
         <div class="lock-inner">
           <h2 class="lock-title" data-lock-title aria-label="Locked &amp; Lean.">Locked &amp; Lean.</h2>
-          <p class="lock-sub" data-lock-sub>Designed to get you strong, lean, and confident. No thinking. No planning. Just training.</p>
+          <p class="lock-sub" data-lock-sub>Designed to get you strong, lean, and confident.</p>
         </div>
       </div>
       <div class="plan-body">
         <div class="plan-copy">
           <p class="plan-lead">Built for the girls ready to lock in, look their best, and feel their best.</p>
           <h3>What&rsquo;s included.</h3>
-          <ul class="plan-list">
-            <li>4 sessions a week: glutes &amp; hamstrings, upper &amp; core, quads &amp; glutes, cardio &amp; core; progressing through different phases and training systems as you go, so it never stays the same.</li>
-            <li>A full nutrition guide: the 80:20 approach explained, how to calculate your calories and macros, plus meal plan ideas to get you started.</li>
-            <li>Exercise form videos, training terms &amp; systems explained.</li>
-            <li>A live tracker to log your sessions, PRs, and results.</li>
-            <li>A weekly schedule with a live Google-synced calendar.</li>
-          </ul>
+          <div class="included" data-accordion>
+            <details class="incl" open>
+              <summary class="incl-head">
+                <span class="incl-label">Training split</span>
+                <span class="incl-hint">4 sessions a week</span>
+                <svg class="incl-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </summary>
+              <div class="incl-panel" data-acc-panel>
+                <p>Glutes &amp; hamstrings, upper &amp; core, quads &amp; glutes, cardio &amp; core &mdash; progressing through different phases and training systems as you go, so it never stays the same.</p>
+              </div>
+            </details>
+            <details class="incl">
+              <summary class="incl-head">
+                <span class="incl-label">Nutrition</span>
+                <span class="incl-hint">The 80:20 approach</span>
+                <svg class="incl-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </summary>
+              <div class="incl-panel" data-acc-panel>
+                <p>A full nutrition guide: the 80:20 approach explained, how to calculate your calories and macros, plus meal plan ideas to get you started.</p>
+              </div>
+            </details>
+            <details class="incl">
+              <summary class="incl-head">
+                <span class="incl-label">Guidance</span>
+                <span class="incl-hint">Videos, terms &amp; systems</span>
+                <svg class="incl-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </summary>
+              <div class="incl-panel" data-acc-panel>
+                <p>Exercise form videos, with training terms and systems explained.</p>
+              </div>
+            </details>
+            <details class="incl">
+              <summary class="incl-head">
+                <span class="incl-label">Tracking</span>
+                <span class="incl-hint">Sessions, PRs &amp; results</span>
+                <svg class="incl-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </summary>
+              <div class="incl-panel" data-acc-panel>
+                <p>A live tracker to log your sessions, PRs, and results as you go.</p>
+              </div>
+            </details>
+            <details class="incl">
+              <summary class="incl-head">
+                <span class="incl-label">Schedule</span>
+                <span class="incl-hint">Synced to your calendar</span>
+                <svg class="incl-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </summary>
+              <div class="incl-panel" data-acc-panel>
+                <p>A weekly schedule with a live Google-synced calendar.</p>
+              </div>
+            </details>
+          </div>
           <div class="plan-cta">
             <button type="button" class="pill pill-lg" data-waitlist-toggle aria-expanded="false" aria-controls="waitlist">NOTIFY ME</button>
             <p class="plan-price">Coming soon &mdash; join the waitlist to be first to know.</p>
@@ -205,38 +250,65 @@
       <h2 class="start-title">Ready to<br />lock in?</h2>
       <p class="start-sub">Drop your details below and let&rsquo;s have a chat about what you need.</p>
 
-      <form class="start-form" id="lockForm" method="POST" action="https://formspree.io/f/mqerprdb" novalidate>
+      <form class="start-form" id="lockForm" method="POST" action="https://formspree.io/f/mqerprdb" novalidate data-stepper>
         <input type="hidden" name="_subject" value="New coaching enquiry — mriafitness.com" />
-        <div class="field">
-          <label for="f-name">Name</label>
-          <input id="f-name" name="name" type="text" required autocomplete="name" aria-describedby="e-name" />
-          <p class="field-error" id="e-name" data-error></p>
+
+        <p class="start-progress" aria-hidden="true">
+          <span class="start-progress-track"><span class="start-progress-fill" data-step-fill></span></span>
+          <span class="start-progress-label" data-step-label>Question 1 of 6</span>
+        </p>
+
+        <div class="form-step" data-step>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name" aria-describedby="e-name" />
+            <p class="field-error" id="e-name" data-error></p>
+          </div>
         </div>
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email" />
-          <p class="field-error" id="e-email" data-error></p>
+        <div class="form-step" data-step>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="e-email" />
+            <p class="field-error" id="e-email" data-error></p>
+          </div>
         </div>
-        <div class="field">
-          <label for="f-gender">Gender <span class="field-optional">(optional)</span></label>
-          <input id="f-gender" name="gender" type="text" autocomplete="sex" />
+        <div class="form-step" data-step>
+          <div class="field">
+            <label for="f-gender">Gender <span class="field-optional">(optional)</span></label>
+            <input id="f-gender" name="gender" type="text" autocomplete="sex" />
+          </div>
         </div>
-        <div class="field">
-          <label for="f-whatsapp">WhatsApp number</label>
-          <input id="f-whatsapp" name="whatsapp" type="tel" required placeholder="+44&hellip;" autocomplete="tel" aria-describedby="e-whatsapp" />
-          <p class="field-error" id="e-whatsapp" data-error></p>
+        <div class="form-step" data-step>
+          <div class="field">
+            <label for="f-whatsapp">WhatsApp number</label>
+            <input id="f-whatsapp" name="whatsapp" type="tel" required placeholder="+44&hellip;" autocomplete="tel" aria-describedby="e-whatsapp" />
+            <p class="field-error" id="e-whatsapp" data-error></p>
+          </div>
         </div>
-        <div class="field">
-          <label for="f-location">Where are you based?</label>
-          <input id="f-location" name="location" type="text" required aria-describedby="e-location" />
-          <p class="field-error" id="e-location" data-error></p>
+        <div class="form-step" data-step>
+          <div class="field">
+            <label for="f-location">Where are you based?</label>
+            <input id="f-location" name="location" type="text" required aria-describedby="e-location" />
+            <p class="field-error" id="e-location" data-error></p>
+          </div>
         </div>
-        <div class="field">
-          <label for="f-goals">Tell me about your training goals</label>
-          <textarea id="f-goals" name="goals" rows="4" required aria-describedby="e-goals"></textarea>
-          <p class="field-error" id="e-goals" data-error></p>
+        <div class="form-step" data-step>
+          <div class="field">
+            <label for="f-goals">Tell me about your training goals</label>
+            <textarea id="f-goals" name="goals" rows="4" required aria-describedby="e-goals"></textarea>
+            <p class="field-error" id="e-goals" data-error></p>
+          </div>
         </div>
-        <button type="submit" class="pill pill-lg pill-invert start-submit">Send request</button>
+
+        <div class="start-nav">
+          <button type="button" class="start-back" data-step-back hidden>&larr; Back</button>
+          <!-- data-step-next starts hidden and data-step-submit starts visible: a
+               type=button "Next" does nothing without JS, so the no-JS fallback
+               needs the real submit button on screen from the start. JS flips
+               this on init (steps.length>1 confirmed) and again per step. -->
+          <button type="button" class="pill pill-lg pill-invert start-submit" data-step-next hidden>Next</button>
+          <button type="submit" class="pill pill-lg pill-invert start-submit" data-step-submit>Send request</button>
+        </div>
         <p class="start-formerror" data-form-error role="alert" hidden>Something went wrong sending that &mdash; please try again, or email me directly.</p>
       </form>
 
